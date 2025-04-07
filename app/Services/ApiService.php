@@ -11,12 +11,12 @@ class ApiService
 {
     public function getNewsData()
     {
-        return Cache::remember('top_news', 5, function () {
+        return Cache::remember('top_news', 3600, function () {
             try {
                 $response = Http::get('https://gnews.io/api/v4/top-headlines', [
                     'token' => 'c06a0e8f850ba697014e626a7f18e446',
                     'lang' => 'en',
-                    'country' => 'ng' // or 'us', 'gb', etc.
+                    'country' => 'ng'
                 ]);
 
                 if ($response->failed()) {
